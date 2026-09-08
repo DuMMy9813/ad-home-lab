@@ -43,6 +43,10 @@ Security Group: Software-Install-Allowed (domain root, not tied to any OU)
 (Server Core), running AD DS + DNS, static IP `192.168.1.50`, running on
 VirtualBox with a bridged network adapter on my home LAN.
 
+![Domain and OU structure confirmed via PowerShell](Screenshot/Screenshot_2026-09-08_104526.png)
+
+![Get-ADDomain output confirming the labcorp.local domain](Screenshot/Screenshot_2026-09-08_104352.png)
+
 ## Skills Demonstrated
 
 - Windows Server installation and configuration (Server Core, no GUI —
@@ -91,6 +95,9 @@ New-ADGroup -Name "Software-Install-Allowed" -GroupScope Global `
 Add-ADGroupMember -Identity "Software-Install-Allowed" -Members "rpatel"
 ```
 
+![Raj Patel confirmed as a member of Software-Install-Allowed](Screenshot/Screenshot_2026-09-08_104244.png)
+
+
 ## Build Log: Problems Encountered & How I Solved Them
 
 Documenting the real troubleshooting, not just the commands that worked —
@@ -125,6 +132,8 @@ no password (succeeded), set the password with `Set-ADAccountPassword`
 This confirmed the failure was specific to the combined command on this
 server build, and the split-and-isolate approach — rather than repeatedly
 retrying the same failing command — is the actual transferable lesson.
+![Diagnosing the New-ADUser password error](Screenshot/Screenshot_2026-09-08_105048.png)
+
 
 **4. Repeated PowerShell syntax errors from manual retyping**
 VirtualBox clipboard sharing wasn't enabled by default, so early commands
@@ -152,3 +161,4 @@ assuming success or failure from the absence of output.
   side
 - Extend the OU structure with nested OUs per department (e.g.
   `OU=Finance/Managers`)
+
